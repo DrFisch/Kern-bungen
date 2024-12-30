@@ -1,0 +1,7 @@
+Übung 11: Welche Ähnlichkeiten erkennen Sie beim Vergleich von Streams und
+Optionals?
+
+- verarbeitungsketten
+- ähnliche methoden (Map(),flatMap())
+- terminal Operationen vorhanden forEach(), ifPresent, collect(Collectors.toList())
+- 

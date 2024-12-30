@@ -1,0 +1,13 @@
+{
+    "java.project.sourcePaths": [
+        ".",
+        "Uebungseinheit2\\Musterlsg",
+        "Uebungseinheit3\\Aufgabe4",
+        "Uebungseinheit3\\Aufgabe7Phaser",
+        "Uebungseinheit3\\Aufgabe9Exchanger",
+        "Uebungseinheit3\\Generic",
+        "Uebungseinheit3\\MusterlsgA1",
+        "Uebungseinheit4"
+    ],
+    "java.project.referencedLibraries": []
+}

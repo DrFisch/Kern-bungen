@@ -1,0 +1,54 @@
+Die downstream-Methode im Gatherer-Interface wird verwendet, 
+um die verarbeiteten Elemente in den Endstrom (z. B. die endgültige List, Set, oder eine andere Sammlung) zu leiten. 
+Je nachdem, wo downstream verwendet wird – in integrator() oder finisher() – ergibt sich ein anderes Verhalten.
+
+1. Verwendung der downstream-Methode in integrator()
+
+    Wann nutzen?
+    Die downstream-Methode in integrator() zu verwenden ist sinnvoll, wenn du Elemente "on-the-fly" weitergeben möchtest.
+    Das bedeutet, dass jedes Element sofort verarbeitet und ggf. an den nächsten Schritt weitergeleitet wird, sobald es auftritt.
+
+    Warum nutzen?
+    Diese Methode ist besonders nützlich für Echtzeit- oder Streaming-Szenarien, 
+    bei denen es von Vorteil ist, das Element unmittelbar nach der Verarbeitung weiterzuleiten, 
+    ohne auf die Verarbeitung aller Elemente zu warten. So kann der Gatherer Zwischenergebnisse sofort bereitstellen 
+    und ist für kontinuierliche Datenströme oder speicherintensive Prozesse geeignet.
+
+    Beispiel
+    Beim Zählen von Duplikaten, wo jedes Element sofort gezählt und ans Endergebnis weitergeleitet werden soll, 
+    wird downstream.push(el) in integrator() verwendet. Dies vermeidet die Notwendigkeit, 
+    das gesamte Ergebnis am Ende zu verarbeiten, und ermöglicht eine effiziente Echtzeitverarbeitung.
+
+2. Verwendung der downstream-Methode in finisher()
+
+    Wann nutzen?
+    downstream in finisher() wird verwendet, wenn das Endergebnis erst nach vollständiger Verarbeitung aller Elemente benötigt wird.
+
+    Warum nutzen?
+    Dies ist nützlich, wenn du eine zusammenfassende Verarbeitung benötigst oder 
+    wenn das gesamte Set an Elementen verfügbar sein muss, bevor ein Endergebnis erzeugt wird. Es ist auch hilfreich, 
+    wenn du aggregierte oder sortierte Daten verarbeiten möchtest, z. B. beim Sortieren oder Zusammenfassen einer Sammlung, 
+    bevor sie an den downstream weitergegeben wird.
+
+    Beispiel
+    Wenn du eine Liste von Elementen nach Häufigkeit sortieren und dann zurückgeben möchtest, 
+    könntest du die downstream-Methode im finisher() aufrufen, um das sortierte Ergebnis am Ende einmalig zu übergeben.
+
+3. Kombination von downstream in integrator() und finisher()
+
+    Wann sinnvoll?
+    Beide Methoden können in speziellen Fällen gemeinsam verwendet werden, 
+    insbesondere wenn ein Teil des Ergebnisses sofort weitergeleitet werden soll, 
+    aber abschließend noch eine Bearbeitung oder Zusammenfassung erforderlich ist.
+
+    Beispiel
+    Bei einem Echtzeit-Zähler, der während des Zählvorgangs laufende Ergebnisse an downstream weiterleitet, 
+    könnte man den finisher() verwenden, um am Ende eine abschließende Sortierung oder eine spezielle Zusammenfassung durchzuführen.
+
+Warum muss man nicht jede Methode des Gatherer-Interface implementieren?
+
+In Java sind Methoden in funktionalen Interfaces wie Gatherer standardmäßig abstrakt, 
+aber nicht alle Methoden müssen zwingend Funktionalität enthalten. Wenn eine Methode nicht benötigt wird, 
+kann sie einfach eine leere Implementierung enthalten. Zum Beispiel, 
+wenn die finale Verarbeitung in finisher() unnötig ist, kann finisher() 
+als leere Methode belassen werden (return (agg, downstream) -> {};).

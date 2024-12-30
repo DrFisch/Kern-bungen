@@ -1,0 +1,44 @@
+
+
+1. Deklarativer Programmierstil:
+
+    Streams ermöglichen einen deklarativen Programmierstil, 
+    bei dem der Fokus darauf liegt, was getan werden soll, 
+    anstatt wie es umgesetzt wird. Das macht den Code einfacher 
+    zu lesen und zu verstehen.
+
+2. Kürzere und ausdrucksstärkere Syntax:
+
+    Der Code mit Streams ist in der Regel kompakter, 
+    da er Methoden wie filter(), map() und reduce() verwendet. 
+    Diese Methoden sind in der Streams-API enthalten und machen den Code ausdrucksstärker.
+    
+    Die Verkettung von Methoden in Streams ermöglicht es, 
+    mehrere Operationen in einer Pipeline zu schreiben, ohne dass zusätzliche Variablen 
+    oder Zwischenspeicherungen nötig sind.
+
+3. Parallele Verarbeitung:
+
+    Streams können leicht parallel verarbeitet werden, indem einfach parallelStream() anstelle von stream() verwendet wird. 
+    Das macht es einfach, die Vorteile von Multi-Core-Prozessoren zu nutzen und die Verarbeitung großer Datenmengen zu beschleunigen.
+
+4. Verbesserte Lesbarkeit und Wartbarkeit:
+
+    Streams machen den Code kürzer und leichter zu warten. 
+    Die Methodenkette ist leicht verständlich und stellt die 
+    Verarbeitungslogik in einer klaren, linearen Reihenfolge dar.
+
+5. Funktionale Programmierung:
+
+    Streams ermöglichen einen funktionalen Programmieransatz, 
+    bei dem Lambda-Ausdrücke und Methodenreferenzen verwendet werden. 
+    Dies führt zu weniger Codezeilen und fördert eine saubere, 
+    funktionale Herangehensweise an die Datenverarbeitung.
+
+Fazit:
+
+Der Stream-Ansatz ist klassischen for-Schleifen überlegen, 
+wenn es um Lesbarkeit, Wartbarkeit, Ausdrucksstärke und parallele Verarbeitung geht. 
+Er fördert einen deklarativen Programmierstil und reduziert die Wahrscheinlichkeit von Fehlern. 
+In Fällen, in denen Performance oder spezifische Optimierungen notwendig sind, 
+können klassische Schleifen jedoch immer noch sinnvoll sein.
